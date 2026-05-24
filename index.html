@@ -1015,6 +1015,62 @@
             margin-bottom: 24px;
         }
 
+        /* BATTLE TUTORIAL OVERLAY */
+        .battle-instructions-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(11, 15, 25, 0.95);
+            z-index: 10001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .battle-instructions-content {
+            background: var(--panel-bg);
+            border: 8px solid #000;
+            box-shadow: 8px 8px 0px var(--accent-cyan);
+            padding: 24px;
+            max-width: 480px;
+            width: 100%;
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .instructions-header {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-yellow);
+            text-shadow: 2px 2px 0px #000;
+            border-bottom: 4px solid #000;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .instruction-spell-row {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            border-bottom: 1px dashed #2d3b56;
+            padding-bottom: 8px;
+        }
+
+        .instruction-spell-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .instruction-spell-name {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.55rem;
+            color: var(--accent-pink);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+
         /* ARCADE COIN SCREEN */
         .insert-coin-overlay {
             position: fixed;
@@ -1203,6 +1259,43 @@
             <button class="retro-btn cyan-btn" id="lvl-ok-btn">AWESOME!</button>
         </div>
     </div>
+
+    <!-- BATTLE TUTORIAL OVERLAY SCREEN -->
+    <div class="battle-instructions-overlay" id="battle-instructions-screen">
+        <div class="battle-instructions-content">
+            <h2 class="instructions-header">👾 BATTLE TUTORIAL</h2>
+            <p style="margin-bottom: 16px; font-size: 0.95rem; text-align: center; color: var(--accent-cyan); font-weight: bold;">
+                You are battling "Legacy Spaghettius" (The Resume Filter). Prove Saimani's skills to bypass it!
+            </p>
+            
+            <div class="instruction-spell-row">
+                <span class="instruction-spell-name">⚔️ JAVA STRIKE</span>
+                Deals high backend codebase damage (60 - 110 HP) to the Legacy Filter's parser logic.
+            </div>
+            
+            <div class="instruction-spell-row">
+                <span class="instruction-spell-name">🛡️ SPRING BARRIER</span>
+                Heals Saimani's Health Points by 25 HP. Green microservice health checks act as protection!
+            </div>
+            
+            <div class="instruction-spell-row">
+                <span class="instruction-spell-name">🔮 SUMMON GPT-4</span>
+                Fires a massive cognitive AI logic beam, dealing immense variable damage (100 - 220 HP).
+            </div>
+            
+            <div class="instruction-spell-row">
+                <span class="instruction-spell-name">⚙️ OPTIMIZE SQL</span>
+                Tunes database indexing queries. Deals moderate damage (40 - 80 HP) and repairs Saimani by 10 HP.
+            </div>
+
+            <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: 14px;">
+                💡 <strong style="color: var(--accent-yellow);">Rules:</strong> The enemy strikes back after every action you perform. Win by reducing the Filter to 0 HP before Saimani's HP hits 0!
+            </p>
+            
+            <button class="retro-btn pink-btn" onclick="hideBattleInstructions()" style="margin-top: 18px; font-size: 0.75rem; width: 100%;">❌ CLOSE TUTORIAL</button>
+        </div>
+    </div>
+
 
     <div class="wrapper">
         <!-- HEADER MODULE -->
@@ -1699,7 +1792,10 @@
 
                         <!-- CONTROLS & SPELLS BOARD -->
                         <div class="boss-controls">
-                            <div style="font-family: 'Press Start 2P', monospace; font-size: 0.55rem; color: #fff; margin-bottom: 2px;">SELECT ACTIONS:</div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <span style="font-family: 'Press Start 2P', monospace; font-size: 0.55rem; color: #fff;">SELECT ACTIONS:</span>
+                                <button class="retro-btn yellow-btn" onclick="showBattleInstructions()" style="font-size: 0.45rem; padding: 4px 8px; box-shadow: 2px 2px 0px #000; cursor: pointer;">❓ HOW TO PLAY</button>
+                            </div>
                             <div class="boss-actions-grid" id="battle-actions-board">
                                 <button class="retro-btn pink-btn" onclick="castSpell('java')">JAVA STRIKE</button>
                                 <button class="retro-btn cyan-btn" onclick="castSpell('spring')">SPRING BARRIER</button>
@@ -2323,6 +2419,18 @@
             const box = document.getElementById('combat-logs');
             box.innerHTML = '<div class="log-entry">Arena rebooted! Saimani is revived with 100/100 HP. Battle the Legacy Filter!</div>';
         }
+
+        function showBattleInstructions() {
+            playSynthSound('click');
+            initAudio();
+            document.getElementById('battle-instructions-screen').style.display = 'flex';
+        }
+
+        function hideBattleInstructions() {
+            playSynthSound('click');
+            document.getElementById('battle-instructions-screen').style.display = 'none';
+        }
+
 
 
         // ----------------------------------------------------
