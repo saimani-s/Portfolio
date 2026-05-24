@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saimani Singirikonda | Software Engineer & AI Specialist</title>
+    <title>Saimani Singirikonda | Software Engineer</title>
     
     <!-- SEO Optimization -->
-    <meta name="description" content="Portfolio of Saimani Singirikonda, Software Engineer & AI Specialist. High-availability backends with Java, Spring Boot, GCP, OpenShift, and AI integration (GPT-4, AWS, Python).">
+    <meta name="description" content="Portfolio of Saimani Singirikonda, Software Engineer. High-availability backends with Java, Spring Boot, GCP, OpenShift, and AI integration (GPT-4, AWS, Python).">
     <meta name="keywords" content="Saimani Singirikonda, Software Engineer, AI Specialist, Java, Spring Boot, GCP, BigQuery, AWS Lambda, OpenShift, microservices, GPT-4, Claude, LLM, REST API">
     <meta name="author" content="Saimani Singirikonda">
     <meta property="og:title" content="Saimani Singirikonda | Software Engineer & AI Specialist">
@@ -1034,6 +1034,8 @@
             padding: 28px;
             max-width: 440px;
             width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
             font-family: 'Share Tech Mono', monospace;
             color: var(--text-color);
             position: relative;
@@ -1094,6 +1096,8 @@
             padding: 24px;
             max-width: 480px;
             width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
             font-family: 'Share Tech Mono', monospace;
             color: var(--text-color);
             position: relative;
@@ -1243,7 +1247,7 @@
                 font-size: 0.75rem;
             }
             .char-name-title p {
-                font-size: 0.7rem;
+                font-size: 0.6rem;
             }
             .status-label {
                 font-size: 0.5rem;
@@ -1292,6 +1296,13 @@
                 height: 150px;
             }
         }
+
+        /* EXTRA TIGHT RESPONSIVENESS FOR SCREENS BELOW 360px */
+        @media (max-width: 360px) {
+            .char-name-title p {
+                font-size: 0.52rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1325,36 +1336,73 @@
         <div class="battle-instructions-content">
             <h2 class="instructions-header">👾 BATTLE TUTORIAL</h2>
             <p style="margin-bottom: 16px; font-size: 0.95rem; text-align: center; color: var(--accent-cyan); font-weight: bold;">
-                You are battling "Legacy Spaghettius" (The Resume Filter). Prove Saimani's skills to bypass it!
+                You are playing as Saimani (Hero), battling "Legacy Spaghettius" (The Resume Filter) to secure a Job Offer!
             </p>
             
             <div class="instruction-spell-row">
-                <span class="instruction-spell-name">⚔️ JAVA STRIKE</span>
-                Deals high backend codebase damage (60 - 110 HP) to the Legacy Filter's parser logic.
+                <span class="instruction-spell-name">⚔️ JAVA STRIKE (Free move)</span>
+                <strong>Real Life:</strong> Core Java backend logic.<br>
+                <strong>Effect:</strong> Deals <strong>60 - 110 HP</strong> codebase damage. Consumes <strong>0 MP</strong> because writing standard Java logic is Saimani's nature and costs no extra AI credits!
             </div>
             
             <div class="instruction-spell-row">
-                <span class="instruction-spell-name">🛡️ SPRING BARRIER</span>
-                Heals Saimani's Health Points by 25 HP. Green microservice health checks act as protection!
+                <span class="instruction-spell-name">🛡️ SPRING BARRIER (Free move)</span>
+                <strong>Real Life:</strong> Spring Boot microservice health checks.<br>
+                <strong>Effect:</strong> Restores <strong>+25 HP</strong> and recharges <strong>+20 MP</strong>. Rebuilds Saimani's system server strength and replenishes AI Computing power!
             </div>
             
             <div class="instruction-spell-row">
-                <span class="instruction-spell-name">🔮 SUMMON GPT-4</span>
-                Fires a massive cognitive AI logic beam, dealing immense variable damage (100 - 220 HP).
+                <span class="instruction-spell-name" style="color: var(--accent-yellow);">🔮 SUMMON GPT-4 (Consumes 30 MP)</span>
+                <strong>Real Life:</strong> Advanced Generative AI prompt pipelines.<br>
+                <strong>Effect:</strong> Deals massive <strong>100 - 220 HP</strong> damage. ⚠️ <em>Why the cost?</em> Summoning state-of-the-art LLMs consumes real-world API tokens and heavy GPU server compute, reducing Saimani's MP!
             </div>
             
             <div class="instruction-spell-row">
-                <span class="instruction-spell-name">⚙️ OPTIMIZE SQL</span>
-                Tunes database indexing queries. Deals moderate damage (40 - 80 HP) and repairs Saimani by 10 HP.
+                <span class="instruction-spell-name" style="color: var(--accent-cyan);">⚙️ OPTIMIZE SQL (Consumes 15 MP)</span>
+                <strong>Real Life:</strong> Database indexing & query speedup.<br>
+                <strong>Effect:</strong> Deals <strong>40 - 80 HP</strong> damage and heals Saimani for <strong>+10 HP</strong>. Requires moderate database server computing resource (MP).
             </div>
 
             <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: 14px;">
-                💡 <strong style="color: var(--accent-yellow);">Rules:</strong> The enemy strikes back after every action you perform. Win by reducing the Filter to 0 HP before Saimani's HP hits 0!
+                💡 <strong style="color: var(--accent-yellow);">Winning Strategy:</strong> The enemy strikes back after every action! If you only click Java Strike, Saimani will run out of HP and be rejected. You must balance your turns: Cast <strong>Summon GPT-4</strong> for heavy damage, and use <strong>Spring Barrier</strong> to heal and recharge your MP when power runs low!
             </p>
             
             <button class="retro-btn pink-btn" onclick="hideBattleInstructions()" style="margin-top: 18px; font-size: 0.75rem; width: 100%;">❌ CLOSE TUTORIAL</button>
         </div>
     </div>
+
+    <!-- STATS INFO OVERLAY SCREEN (VERY BASIC LANGUAGE) -->
+    <div class="battle-instructions-overlay" id="stats-info-screen">
+        <div class="battle-instructions-content" style="box-shadow: 8px 8px 0px var(--accent-yellow);">
+            <h2 class="instructions-header" style="color: var(--accent-cyan);">📊 STATS TUTORIAL</h2>
+            <p style="margin-bottom: 16px; font-size: 0.95rem; text-align: center; color: var(--accent-yellow); font-weight: bold;">
+                What do Saimani's game stats mean in real life?
+            </p>
+            
+            <div class="instruction-spell-row">
+                <span class="instruction-spell-name" style="color: var(--accent-pink);">❤️ HP (HEALTH POINTS)</span>
+                <strong>System stability and uptime:</strong> Just like health in a game, this shows how stable Saimani's servers and backend deployments are. Full HP means 100% bug-free server stability and uptime!
+            </div>
+            
+            <div class="instruction-spell-row">
+                <span class="instruction-spell-name" style="color: var(--accent-cyan);">⚡ MP (MANA POINTS)</span>
+                <strong>AI compute and coding power:</strong> The computational energy, API credits, and GPU server capacity Saimani uses to execute advanced AI models (like GPT-4) and database index optimizations!
+            </div>
+            
+            <div class="instruction-spell-row">
+                <span class="instruction-spell-name" style="color: var(--accent-yellow);">⭐ XP (EXPERIENCE POINTS)</span>
+                <strong>Career Achievements:</strong> Gained whenever a recruiter checkmarks completed job quests in Saimani's Quest Log below. Accumulating XP triggers a <strong>LEVEL UP</strong>!
+            </div>
+            
+            <div class="instruction-spell-row">
+                <span class="instruction-spell-name" style="color: #fff;">👑 CHAR LEVEL (LVL)</span>
+                <strong>Professional Mastery:</strong> As Saimani's Level increases, all of his backend coding, cloud networking, and AI integration skills grow permanently stronger!
+            </div>
+            
+            <button class="retro-btn pink-btn" onclick="hideStatsInfo()" style="margin-top: 18px; font-size: 0.75rem; width: 100%;">❌ CLOSE GUIDE</button>
+        </div>
+    </div>
+
 
     <!-- SECURE CONTACT OVERLAY SCREEN -->
     <div class="contact-modal-overlay" id="contact-modal-screen">
@@ -1407,7 +1455,7 @@
                 </svg>
                 <div class="logo-text">
                     <h1>SAIMANI.S</h1>
-                    <p>SOFTWARE ENGINEER & AI SPECIALIST</p>
+                    <p>SOFTWARE ENGINEER</p>
                 </div>
             </div>
             <div class="header-controls">
@@ -1425,9 +1473,9 @@
                 
                 <!-- HERO STATUS CARD -->
                 <div class="retro-panel">
-                    <div class="retro-panel-title">
+                    <div class="retro-panel-title" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                         <span>HERO STATUS</span>
-                        <span style="color: var(--accent-pink); font-size: 0.6rem;">LVL <span id="char-lvl">5</span></span>
+                        <button onclick="showStatsInfo()" class="retro-btn yellow-btn" style="font-size: 0.42rem; padding: 4px 6px; box-shadow: 2px 2px 0px #000; cursor: pointer;">❓ STATS INFO</button>
                     </div>
                     <div class="hero-stats-card">
                         <div class="character-portrait-box">
@@ -1454,22 +1502,22 @@
                             </div>
                             <div class="char-name-title">
                                 <h2>Saimani S.</h2>
-                                <p>AI Specialist</p>
+                                <p>Software Engineer - Capgemini</p>
                             </div>
                         </div>
 
                         <!-- RPG STAT BARS -->
                         <div class="status-bars">
                             <div class="status-bar-row">
-                                <span class="status-label" title="HP: Health Points (Resilience / Application Uptime)">HP</span>
-                                <div class="status-bar-outer" title="HP: Health Points (Resilience / Application Uptime)">
+                                <span class="status-label" title="HP (Health Points) = System stability and uptime.">HP</span>
+                                <div class="status-bar-outer" title="HP (Health Points) = System stability and uptime.">
                                     <div class="status-bar-inner" id="status-hp-bar" style="width: 100%;"></div>
                                     <span class="status-val" id="status-hp-val">100/100</span>
                                 </div>
                             </div>
                             <div class="status-bar-row">
-                                <span class="status-label" title="MP: Mana Points (AI Computing Resource / Computational Power)">MP</span>
-                                <div class="status-bar-outer" title="MP: Mana Points (AI Computing Resource / Computational Power)">
+                                <span class="status-label" title="MP (Mana Points) = AI compute and coding power.">MP</span>
+                                <div class="status-bar-outer" title="MP (Mana Points) = AI compute and coding power.">
                                     <div class="status-bar-inner mp" id="status-mp-bar" style="width: 80%;"></div>
                                     <span class="status-val" id="status-mp-val">80/100</span>
                                 </div>
@@ -1709,6 +1757,9 @@
                     <p style="font-size: 1.05rem; line-height: 1.7;">
                         I have hands-on exposure to AI/LLM tools (OpenAI GPT-4, Claude, Azure/AWS AI services) and am looking to apply both backend and AI expertise to drive innovative enterprise systems.
                     </p>
+                    <p style="font-size: 1.05rem; line-height: 1.7; margin-top: 12px; color: var(--accent-yellow); font-family: 'Press Start 2P', monospace; font-size: 0.65rem; border-left: 4px solid var(--accent-pink); padding-left: 10px;">
+                        💬 "I love vibe coding &amp; exploring new AI tools!"
+                    </p>
                 </div>
 
                 <!-- QUESTS TIMELINE (EXPERIENCE) -->
@@ -1923,7 +1974,7 @@
             </div>
             <div class="terminal-input-row" style="border-top: 2px solid #0f3014; padding-top: 8px;">
                 <span class="terminal-prompt"><span class="terminal-prompt-user">visitor@</span>saimani-os:~$</span>
-                <input type="text" class="terminal-input" id="term-input" autocomplete="off" autofocus placeholder="Type a command...">
+                <input type="text" class="terminal-input" id="term-input" autocomplete="off" placeholder="Type a command...">
             </div>
         </footer>
 
@@ -2051,6 +2102,8 @@
             initAudio();
             playSynthSound('coin');
             document.getElementById('coin-screen').style.display = 'none';
+            // Force viewport to start at the very top of the arcade board
+            window.scrollTo(0, 0);
         });
 
         // ----------------------------------------------------
@@ -2097,7 +2150,8 @@
         const questsCompletionTracker = {};
 
         function addExperience(amount, event) {
-            currentXP += amount;
+            // Ensure experience never drops below 0 when unchecking quests
+            currentXP = Math.max(0, currentXP + amount);
             
             // Render floaty text indicator
             if (event) {
@@ -2130,7 +2184,6 @@
             const percentage = (currentXP / maxXp) * 100;
             document.getElementById('status-xp-bar').style.width = `${percentage}%`;
             document.getElementById('status-xp-val').innerText = `${currentXP}/${maxXp}`;
-            document.getElementById('char-lvl').innerText = charLevel;
             document.getElementById('badge-lvl').innerText = charLevel;
             document.getElementById('combat-lvl').innerText = charLevel;
         }
@@ -2340,11 +2393,12 @@
             addCombatLog(`Equipped artifact: ${data.title}! Battle modifiers updated.`);
         }
 
-
+        // ----------------------------------------------------
         // ----------------------------------------------------
         // Boss Battle Game Engine (Job Analyzer Arena)
         // ----------------------------------------------------
         let heroHp = 100;
+        let heroMp = 80;
         let bossHp = 800;
         const maxBossHp = 800;
         let isCombatActive = true;
@@ -2379,6 +2433,18 @@
 
             initAudio();
 
+            // MP Checks
+            if (spellId === 'gpt4' && heroMp < 30) {
+                playSynthSound('hit');
+                addCombatLog("⚠️ NOT ENOUGH MP! Summoning GPT-4 requires 30 AI Compute (MP). Cast Spring Barrier to recharge!");
+                return;
+            }
+            if (spellId === 'sql' && heroMp < 15) {
+                playSynthSound('hit');
+                addCombatLog("⚠️ NOT ENOUGH MP! SQL Index Tuning requires 15 AI Compute (MP). Cast Spring Barrier to recharge!");
+                return;
+            }
+
             if (spellId === 'java') {
                 // Java Strike
                 playSynthSound('laser');
@@ -2389,30 +2455,33 @@
                 addCombatLog(`Saimani casts JAVA STRIKE! Deals ${dmg} backend damage! The Resume Filter's stability decreases.`);
             } 
             else if (spellId === 'spring') {
-                // Spring Barrier
+                // Spring Barrier (Heals HP and Recharges MP!)
                 playSynthSound('heal');
                 heroHp = Math.min(100, heroHp + 25);
+                heroMp = Math.min(100, heroMp + 20);
                 flashArena('flash-cyan');
-                addCombatLog(`Saimani conjures SPRING BARRIER! Restores 25 HP. Microservice health checks are green!`);
+                addCombatLog(`Saimani conjures SPRING BARRIER! Restores 25 HP and recharges 20 MP. Health checks are green!`);
             } 
             else if (spellId === 'gpt4') {
-                // Summon GPT-4
+                // Summon GPT-4 (Consumes 30 MP)
                 playSynthSound('levelup');
+                heroMp -= 30;
                 const dmg = Math.floor(Math.random() * 120) + 100;
                 bossHp = Math.max(0, bossHp - dmg);
                 shakeBoss();
                 flashArena('flash-red');
-                addCombatLog(`Saimani summons GPT-4 COGNITIVE BEAM! Inflicts ${dmg} damage on the legacy Filter.`);
+                addCombatLog(`Saimani summons GPT-4 COGNITIVE BEAM! Deals ${dmg} massive AI damage! (Consumed 30 MP)`);
             } 
             else if (spellId === 'sql') {
-                // Optimize SQL
+                // Optimize SQL (Consumes 15 MP)
                 playSynthSound('laser');
+                heroMp -= 15;
                 const dmg = Math.floor(Math.random() * 40) + 40;
                 bossHp = Math.max(0, bossHp - dmg);
                 heroHp = Math.min(100, heroHp + 10);
                 shakeBoss();
                 flashArena('flash-cyan');
-                addCombatLog(`Saimani runs SQL INDEX TUNING! Resolves database rows, dealing ${dmg} damage and repairing 10 HP.`);
+                addCombatLog(`Saimani runs SQL INDEX TUNING! Resolves database rows, dealing ${dmg} damage and repairing 10 HP. (Consumed 15 MP)`);
             }
 
             // Update stats view
@@ -2464,6 +2533,10 @@
             // Update Status Section HP
             document.getElementById('status-hp-bar').style.width = `${heroHp}%`;
             document.getElementById('status-hp-val').innerText = `${heroHp}/100`;
+
+            // Update Status Section MP (Dynamic!)
+            document.getElementById('status-mp-bar').style.width = `${heroMp}%`;
+            document.getElementById('status-mp-val').innerText = `${heroMp}/100`;
         }
 
         function handleCombatVictory() {
@@ -2495,6 +2568,7 @@
         function resetBattle() {
             playSynthSound('heal');
             heroHp = 100;
+            heroMp = 80; // Reset MP
             bossHp = 800;
             isCombatActive = true;
             
@@ -2506,8 +2580,9 @@
             
             // Clear logs
             const box = document.getElementById('combat-logs');
-            box.innerHTML = '<div class="log-entry">Arena rebooted! Saimani is revived with 100/100 HP. Battle the Legacy Filter!</div>';
+            box.innerHTML = '<div class="log-entry">Arena rebooted! Saimani is revived with 100/100 HP and 80/100 MP. Battle the Legacy Filter!</div>';
         }
+
 
         function showBattleInstructions() {
             playSynthSound('click');
@@ -2519,6 +2594,18 @@
             playSynthSound('click');
             document.getElementById('battle-instructions-screen').style.display = 'none';
         }
+
+        function showStatsInfo() {
+            playSynthSound('click');
+            initAudio();
+            document.getElementById('stats-info-screen').style.display = 'flex';
+        }
+
+        function hideStatsInfo() {
+            playSynthSound('click');
+            document.getElementById('stats-info-screen').style.display = 'none';
+        }
+
 
         function openContactModal(e) {
             if (e) e.preventDefault();
