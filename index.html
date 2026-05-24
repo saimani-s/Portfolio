@@ -1015,6 +1015,66 @@
             margin-bottom: 24px;
         }
 
+        /* CONTACT MODAL OVERLAY */
+        .contact-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(11, 15, 25, 0.95);
+            z-index: 10002;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .contact-modal-content {
+            background: var(--panel-bg);
+            border: 8px solid #000;
+            box-shadow: 8px 8px 0px var(--accent-yellow);
+            padding: 28px;
+            max-width: 440px;
+            width: 100%;
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--text-color);
+            position: relative;
+            text-align: center;
+        }
+
+        .contact-header {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            text-shadow: 2px 2px 0px #000;
+            border-bottom: 4px solid #000;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .contact-channel-row {
+            background: #172030;
+            border: 3px solid #000;
+            padding: 12px;
+            margin-bottom: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-channel-label {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.55rem;
+            color: var(--accent-pink);
+        }
+
+        .contact-channel-val {
+            font-size: 1.05rem;
+            color: #fff;
+            font-weight: bold;
+            word-break: break-all;
+        }
+
+
         /* BATTLE TUTORIAL OVERLAY */
         .battle-instructions-overlay {
             position: fixed;
@@ -1296,6 +1356,35 @@
         </div>
     </div>
 
+    <!-- SECURE CONTACT OVERLAY SCREEN -->
+    <div class="contact-modal-overlay" id="contact-modal-screen">
+        <div class="contact-modal-content">
+            <h2 class="contact-header">📡 SECURE BEACON</h2>
+            <p style="margin-bottom: 16px; font-size: 0.9rem; color: var(--accent-cyan); font-weight: bold;">
+                TRANSMITTING COMMUNICATIONS COORDINATES
+            </p>
+            
+            <div class="contact-channel-row">
+                <span class="contact-channel-label">📧 EMAIL ADDRESS</span>
+                <span class="contact-channel-val">saimani.singirikonda@gmail.com</span>
+                <button class="retro-btn yellow-btn" id="copy-email-btn" onclick="copyEmailToClipboard()" style="font-size: 0.55rem; padding: 6px 10px; margin-top: 6px; box-shadow: 2px 2px 0px #000; cursor: pointer;">📋 COPY EMAIL</button>
+            </div>
+            
+            <div class="contact-channel-row">
+                <span class="contact-channel-label">🔗 PROFESSIONAL NETWORK</span>
+                <a href="https://linkedin.com/in/saimani-singirikonda-b5a0431bb" target="_blank" class="retro-btn cyan-btn" style="font-size: 0.55rem; padding: 6px 10px; margin-top: 6px; box-shadow: 2px 2px 0px #000; text-decoration: none;">🌐 GO TO LINKEDIN</a>
+            </div>
+            
+            <div class="contact-channel-row">
+                <span class="contact-channel-label">💻 SOURCE REPOSITORIES</span>
+                <a href="https://github.com/saimani-s" target="_blank" class="retro-btn pink-btn" style="font-size: 0.55rem; padding: 6px 10px; margin-top: 6px; box-shadow: 2px 2px 0px #000; text-decoration: none;">🌐 GO TO GITHUB</a>
+            </div>
+            
+            <button class="retro-btn" onclick="closeContactModal()" style="margin-top: 10px; font-size: 0.75rem; width: 100%; background: #253046;">❌ CLOSE BEACON</button>
+        </div>
+    </div>
+
+
 
     <div class="wrapper">
         <!-- HEADER MODULE -->
@@ -1324,7 +1413,7 @@
             <div class="header-controls">
                 <button class="retro-btn" id="audio-toggle">🔊 SOUND: ON</button>
                 <button class="retro-btn" id="crt-toggle">📺 CRT FILTERS: ON</button>
-                <a href="mailto:saimani.singirikonda@gmail.com" class="retro-btn yellow-btn" style="text-decoration:none;">📧 HIRE HERO</a>
+                <button onclick="openContactModal(event)" class="retro-btn yellow-btn" style="cursor: pointer;">📧 HIRE HERO</button>
             </div>
         </header>
 
@@ -1425,8 +1514,8 @@
                     <div class="contact-beacon-panel">
                         <p style="font-size: 0.88rem; color: var(--text-muted); text-align: center;">Get in touch directly with Saimani to coordinate quests or schedule recruiter battles!</p>
                         <div class="contact-grid">
-                            <a href="mailto:saimani.singirikonda@gmail.com" class="retro-btn pink-btn" style="text-decoration:none;">📧 EMAIL ME</a>
-                            <a href="https://linkedin.com/in/saimani-singirikonda-b5a0431bb" target="_blank" class="retro-btn cyan-btn" style="text-decoration:none;">🔗 LINKEDIN</a>
+                            <button onclick="openContactModal(event)" class="retro-btn pink-btn" style="cursor: pointer; width: 100%;">📧 EMAIL</button>
+                            <a href="https://linkedin.com/in/saimani-singirikonda-b5a0431bb" target="_blank" class="retro-btn cyan-btn" style="text-decoration:none; display: inline-flex; width: 100%;">🔗 LINKEDIN</a>
                         </div>
                     </div>
                 </div>
@@ -2431,6 +2520,38 @@
             document.getElementById('battle-instructions-screen').style.display = 'none';
         }
 
+        function openContactModal(e) {
+            if (e) e.preventDefault();
+            playSynthSound('levelup');
+            initAudio();
+            document.getElementById('contact-modal-screen').style.display = 'flex';
+        }
+
+        function closeContactModal() {
+            playSynthSound('click');
+            document.getElementById('contact-modal-screen').style.display = 'none';
+        }
+
+        function copyEmailToClipboard() {
+            const email = "saimani.singirikonda@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                playSynthSound('coin');
+                const copyBtn = document.getElementById('copy-email-btn');
+                const originalText = copyBtn.innerText;
+                copyBtn.innerText = "✔️ COPIED!";
+                copyBtn.classList.remove('yellow-btn');
+                copyBtn.classList.add('cyan-btn');
+                setTimeout(() => {
+                    copyBtn.innerText = originalText;
+                    copyBtn.classList.remove('cyan-btn');
+                    copyBtn.classList.add('yellow-btn');
+                }, 2000);
+            }).catch(err => {
+                console.error('Could not copy email: ', err);
+            });
+        }
+
+
 
 
         // ----------------------------------------------------
@@ -2502,10 +2623,8 @@
                     appendTerminalLine("- [Capgemini] Built REST microservices on Java &amp; OpenShift. Splunk logs debugging.");
                     break;
                 case 'contact':
-                    appendTerminalLine("SECURE TRANSMISSION CHANNELS:");
-                    appendTerminalLine("- Email: <a href='mailto:saimani.singirikonda@gmail.com' style='color:#39ff14;'>saimani.singirikonda@gmail.com</a>");
-                    appendTerminalLine("- GitHub: <a href='https://github.com/saimani-s' target='_blank' style='color:#39ff14;'>github.com/saimani-s</a>");
-                    appendTerminalLine("- LinkedIn: <a href='https://linkedin.com/in/saimani-singirikonda-b5a0431bb' target='_blank' style='color:#39ff14;'>linkedin.com/in/saimani-singirikonda</a>");
+                    appendTerminalLine("Opening secure communications portal...", 'success');
+                    openContactModal();
                     break;
                 case 'boss':
                     appendTerminalLine("Scrolling to Boss Arena...", 'success');
